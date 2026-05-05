@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriBites | Premium Healthy Snacks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="Images/Logo.jpg" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <span class="logo-text">NutriBites</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#products" class="nav-link">Shop</a>
+          <a href="#about" class="nav-link">Our Story</a>
+          <a href="payment-history.html" class="nav-link">
+            <i class="fas fa-receipt"></i> My Orders
+          </a>
+          <a href="cart.html" class="nav-link cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+    <!-- Hero Slideshow -->
+    <section class="hero" id="home">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="Images/Slideshow1.jpeg" alt="Fresh Ingredients">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-tag">Artisan Crafted</span>
+            <h1>Nourish Your Body,<br>Elevate Your Day</h1>
+            <p>Premium healthy snacks made with intention</p>
+            <a href="#products" class="btn btn-primary">Explore Collection</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="Images/Slideshow2.jpeg" alt="Healthy Lifestyle">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-tag">Locally Sourced</span>
+            <h1>Ingredients That Matter</h1>
+            <p>Every bite crafted with care and purpose</p>
+            <a href="#products" class="btn btn-primary">Discover Now</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="Images/Slideshow3.jpeg" alt="Wellness">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-tag">Express Delivery</span>
+            <h1>Wellness, Delivered</h1>
+            <p>Same-day premium delivery across Malaysia</p>
+            <a href="#products" class="btn btn-primary">Order Today</a>
+          </div>
+        </div>
+        <button class="slide-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="slide-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="slide-dots">
+          <span class="dot active" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+      </div>
+    </section>
+  
+
+  <!-- Products Section -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Collection</span>
+        <h2 class="section-title">Curated Wellness</h2>
+        <p class="section-desc">Thoughtfully crafted snacks for the mindful life</p>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <span class="about-tag">Our Philosophy</span>
+          <h2>Wellness, Redefined</h2>
+          <p>At NutriBites, we believe that nourishment should never compromise on pleasure. Our artisan snacks are crafted with premium, locally-sourced ingredients, designed for those who seek both health and indulgence.</p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-leaf"></i>
+              <h3>Natural Ingredients</h3>
+              <p>Organic, ethically-sourced components</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-hand-holding-heart"></i>
+              <h3>Artisan Crafted</h3>
+              <p>Small-batch production for quality</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-truck"></i>
+              <h3>Premium Delivery</h3>
+              <p>White-glove service to your door</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600" alt="About NutriBites">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <span class="logo-text">NutriBites</span>
+          </div>
+          <p>Elevating wellness through premium, artisan-crafted nutrition.</p>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Customer Care</h3>
+          <ul>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+            <li><a href="#shipping">Shipping & Delivery</a></li>
+            <li><a href="#returns">Returns & Exchanges</a></li>
+            <li><a href="#contact">Contact Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#cookies">Cookie Policy</a></li>
+            <li><a href="#warranty">Product Warranty</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul class="contact-info">
+            <li><i class="fas fa-envelope"></i> hello@nutribites.com</li>
+            <li><i class="fas fa-phone"></i> +60 3-2123 4567</li>
+            <li><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 NutriBites. All rights reserved. | Crafted with <i class="fas fa-heart"></i> in Malaysia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/slideshow.js"></script>
+</body>
+</html>

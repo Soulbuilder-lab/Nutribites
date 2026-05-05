@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders - NutriBites</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="Images/Logo.jpg" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <img src="Images/Logo.jpg" alt="NutriBites" class="logo-img">
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#products" class="nav-link">Products</a>
+          <a href="payment-history.html" class="nav-link active">
+            <i class="fas fa-receipt"></i> View Orders
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="orders-section">
+    <div class="container">
+      <h1 class="page-title">My Orders</h1>
+      <div class="orders-container" id="ordersContainer"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 NutriBites. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/payment-history.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - NutriBites</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="Images/Logo.jpg" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <img src="Images/Logo.jpg" alt="NutriBites" class="logo-img">
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="checkout-section">
+    <div class="container">
+      <h1 class="page-title">Checkout</h1>
+      <div class="checkout-container">
+        <div class="checkout-form">
+          <h2>Delivery Information</h2>
+          <form id="checkoutForm">
+            <!-- Delivery Information -->
+            <div class="form-group">
+              <label>Full Name <span class="required">*</span></label>
+              <input type="text" id="fullname" placeholder="Enter your full name" class="premium-input">
+            </div>
+
+            <div class="form-group">
+              <label>Email Address <span class="required">*</span></label>
+              <input type="email" id="email" placeholder="your.email@example.com" class="premium-input">
+            </div>
+
+            <div class="form-group">
+              <label>Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" placeholder="+60 12-345 6789" class="premium-input">
+            </div>
+
+            <div class="form-group">
+              <label>Delivery Address <span class="required">*</span></label>
+              <textarea id="address" placeholder="Street address, Apartment/Suite/Unit (optional)" rows="3" class="premium-input"></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>City <span class="required">*</span></label>
+                <input type="text" id="city" placeholder="Select city" class="premium-input">
+              </div>
+  
+              <div class="form-group">
+                <label>Postal Code <span class="required">*</span></label>
+                <input type="text" id="postalcode" placeholder="e.g., 50000" class="premium-input">
+              </div>
+            </div>
+            
+            <h2>Payment Method</h2>
+            <div class="payment-methods">
+              <label class="payment-option">
+                <input type="radio" name="payment" value="card" checked>
+                <div class="payment-card">
+                  <i class="fas fa-credit-card"></i>
+                  <span>Credit/Debit Card</span>
+                </div>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="cod">
+                <div class="payment-card">
+                  <i class="fas fa-money-bill-wave"></i>
+                  <span>Cash on Delivery</span>
+                </div>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-lock"></i> Complete Order
+            </button>
+          </form>
+        </div>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="orderItems"></div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkoutSubtotal">RM0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Delivery</span>
+            <span>RM5.00</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="checkoutTotal">RM0.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/checkout.js"></script>
+</body>
+</html>
