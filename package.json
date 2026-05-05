@@ -1,0 +1,16 @@
+{
+  "name": "nutribites-premium",
+  "version": "2.0.0",
+  "description": "Premium healthy snacks e-commerce",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7",
+    "stripe": "^16.11.0"
+  }
+}
