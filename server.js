@@ -42,8 +42,8 @@ app.post('/create-checkout-session', async (req, res) => {
       payment_method_types: ['card'],
       line_items,
       mode: 'payment',
-      success_url: `http://localhost:${PORT}/success`,
-      cancel_url: `http://localhost:${PORT}/cancel`,
+      success_url: `https://nutribites-4051.onrender.com/success`,
+      cancel_url: `https://nutribites-4051.onrender.com/cancel`,
     });
 
     res.json({ url: session.url });
