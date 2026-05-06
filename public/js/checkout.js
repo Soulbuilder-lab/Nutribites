@@ -27,7 +27,8 @@ function renderOrderSummary() {
   
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const delivery = 5.00;
-  const total = subtotal + delivery;
+  const service = 2.00
+  const total = subtotal + delivery + service;
   
   orderItemsContainer.innerHTML = cart.map(item => `
     <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
@@ -123,7 +124,8 @@ function setupFormSubmission() {
       // 💰 Calculate totals
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       const delivery = 5.00;
-      const total = subtotal + delivery;
+      const service = 2.00;
+      const total = subtotal + delivery + service;
       
       // 📦 Create order object
       const order = {
@@ -132,6 +134,7 @@ function setupFormSubmission() {
         items: JSON.parse(JSON.stringify(cart)), // Deep copy
         subtotal,
         delivery,
+        service,
         total,
         status: 'completed',
         customer: formData

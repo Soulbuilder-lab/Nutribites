@@ -63,7 +63,7 @@ function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
 
 function updateTotals() {
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const total = subtotal + 5;
+  const total = subtotal + 5 + 2;
   document.getElementById('subtotal').textContent = `RM${subtotal.toFixed(2)}`;
   document.getElementById('total').textContent = `RM${total.toFixed(2)}`;
 }
