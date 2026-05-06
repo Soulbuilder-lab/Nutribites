@@ -3,55 +3,55 @@ const products = [
   {
     id: 1,
     title: "Dark Chocolate Protein Bar",
-    price: 18.90,
+    price: 16.90,
     images: [
       "Images/Chocolate-bar .jpeg",
       "Images/Chocolatepack.jpeg",
-      "Images/Chocolatepack.jpeg"
+      "Images/Chocolatepic.jpeg"
     ],
     description: "Rich Belgian dark chocolate infused with premium whey protein"
   },
   {
     id: 2,
     title: "Granola Power Bar",
-    price: 15.90,
+    price: 13.90,
     images: [
       "Images/Granola-bar.jpeg",
       "Images/Granolapack.jpeg",
-      "Images/Granolapack.jpeg"
+      "Images/Granolapic.jpeg"
     ],
     description: "Artisan blend of organic oats, wild honey, and premium nuts"
   },
   {
     id: 3,
-    title: "Roasted Cashew Crunch",
-    price: 24.90,
+    title: "Veggie Crunch Mix",
+    price: 22.90,
     images: [
       "Images/Cashew-crunch.jpeg",
       "Images/Cashewpack.jpeg",
-      "Images/Cashewpack.jpeg"
+      "Images/Veggiepic.jpeg"
     ],
-    description: "Premium whole cashews roasted with traditional recipe"
+    description: "Premium whole veggie crunch with traditional recipe"
   },
   {
     id: 4,
     title: "Spiced Cashew Bowl",
-    price: 22.90,
+    price: 20.90,
     images: [
       "Images/Spiced-cashews.jpeg",
       "Images/Spicedpack.jpeg",
-      "Images/Spicedpack.jpeg"
+      "Images/Spicedpic.jpeg"
     ],
     description: "Traditional Malaysian spiced cashews with curry leaves & chilies"
   },
   {
     id: 5,
-    title: "Spiced Cashew Bowl",
+    title: "Yogurt Berry Crunch Cups",
     price: 10.90,
     images: [
       "Images/Yogurt.jpeg",
       "Images/Yogurtpack.jpeg",
-      "Images/Yogurtpack.jpeg"
+      "Images/Yogurtpic.jpeg"
     ],
     description: "Greek yogurt layered with crunchy granola and mixed berries"
   }
