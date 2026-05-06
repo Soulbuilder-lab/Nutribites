@@ -879,6 +879,7 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.75rem; }
   .slide-content h1 { font-size: 1.5rem; }
   .slide-content p { font-size: 0.95rem; }
   .slide-btn { display: none; }
+  #product{ object-fit: cover;margin-top: auto; width: 100px;}
   
   .product-gallery { height: 270px; }
   .product-info { padding: 1.5rem; }
