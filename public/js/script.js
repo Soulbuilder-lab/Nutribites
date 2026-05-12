@@ -1,4 +1,4 @@
-// 📦 Products Data (Premium Collection - Prices in RM)
+// 📦 Products Data with Value Propositions
 const products = [
   {
     id: 1,
@@ -9,7 +9,8 @@ const products = [
       "Images/Chocolatepack.jpeg",
       "Images/Chocolatepic.jpeg"
     ],
-    description: "Rich Belgian dark chocolate infused with premium whey protein"
+    description: "Rich Belgian dark chocolate infused with premium whey protein",
+    badge: "🌱 Eco-Friendly" // Value Prop: Sustainability
   },
   {
     id: 2,
@@ -20,7 +21,8 @@ const products = [
       "Images/Granolapack.jpeg",
       "Images/Granolapic.jpeg"
     ],
-    description: "Artisan blend of organic oats, wild honey, and premium nuts"
+    description: "Artisan blend of organic oats, wild honey, and premium nuts",
+    badge: "⚡ Fast Energy" // Value Prop: Performance
   },
   {
     id: 3,
@@ -31,7 +33,8 @@ const products = [
       "Images/Cashewpack.jpeg",
       "Images/Veggiepic.jpeg"
     ],
-    description: "Premium whole veggie crunch with traditional recipe"
+    description: "Premium whole veggie crunch with traditional recipe",
+    badge: "💰 Best Value" // Value Prop: Price
   },
   {
     id: 4,
@@ -42,7 +45,8 @@ const products = [
       "Images/Spicedpack.jpeg",
       "Images/Spicedpic.jpeg"
     ],
-    description: "Traditional Malaysian spiced cashews with curry leaves & chilies"
+    description: "Traditional Malaysian spiced cashews with curry leaves & chilies",
+    badge: "🔥 Trending Now" // Value Prop: Popularity
   },
   {
     id: 5,
@@ -53,7 +57,8 @@ const products = [
       "Images/Yogurtpack.jpeg",
       "Images/Yogurtpic.jpeg"
     ],
-    description: "Greek yogurt layered with crunchy granola and mixed berries"
+    description: "Greek yogurt layered with crunchy granola and mixed berries",
+    badge: "✨ Premium Quality" // Value Prop: Luxury/Quality
   }
 ];
 
@@ -80,6 +85,9 @@ function renderProducts() {
   
   productsGrid.innerHTML = products.map(p => `
     <div class="product-card" data-id="${p.id}">
+      <!-- Value Proposition Badge -->
+      <span class="product-badge">${p.badge}</span>
+      
       <div class="product-gallery">
         <div class="product-gallery-images" id="gallery-${p.id}">
           ${p.images.map((img, idx) => `
