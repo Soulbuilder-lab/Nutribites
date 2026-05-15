@@ -5,7 +5,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 10000;
 
 // Middleware
 app.use(express.json());
