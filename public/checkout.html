@@ -15,6 +15,10 @@
         <a href="index.html" class="logo">
           <img src="Images/Logo.jpg" alt="NutriBites" class="logo-img">
         </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          </a>
+        </div>
       </nav>
     </div>
   </header>
@@ -62,21 +66,57 @@
             <h2>Payment Method</h2>
             <div class="payment-methods">
               <label class="payment-option">
-                <input type="radio" name="payment" value="card" checked>
-                <div class="payment-card">
-                  <i class="fas fa-credit-card"></i>
-                  <span>Credit/Debit Card</span>
-                </div>
-              </label>
-              <label class="payment-option">
                 <input type="radio" name="payment" value="cod">
                 <div class="payment-card">
                   <i class="fas fa-money-bill-wave"></i>
                   <span>Cash on Delivery</span>
                 </div>
               </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="card" >
+                <div class="payment-card">
+                  <i class="fas fa-credit-card"></i>
+                  <span>Credit/Debit Card</span>
+                </div>
+              </label>              
             </div>
 
+            <!-- Card Details Section (Hidden by default) -->
+            <div id="cardDetails" class="card-details-section" style="display: none;">
+              <div class="form-group">
+                <label>Cardholder Name</label>
+                <input type="text" id="cardName" class="premium-input" placeholder="John Doe" required>
+              </div>
+  
+              <div class="form-group">
+                <label>Card Number</label>
+                  <div class="card-input-wrapper">
+                    <input type="text" id="cardNumber" class="premium-input" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    <i class="fas fa-credit-card card-icon"></i>
+                  </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Expiry Date</label>
+                  <input type="text" id="cardExpiry" class="premium-input" placeholder="MM/YY" maxlength="5" required>
+              </div>
+
+              <div class="form-group">
+                <label>CVV</label>
+                  <div class="cvv-input-wrapper">
+                    <input type="password" id="cardCvv" class="premium-input" placeholder="123" maxlength="3" required>
+                    <i class="fas fa-question-circle cvv-tooltip" title="3 digits on back of card"></i>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="card-security-note">
+            <i class="fas fa-shield-alt"></i>
+            <span>Your payment information is encrypted and secure</span>
+          </div>
+          
+        </div>
             <button type="submit" class="btn btn-primary btn-block">
               <i class="fas fa-lock"></i> Complete Order
             </button>
@@ -95,8 +135,12 @@
             <span>RM5.00</span>
           </div>
           <div class="summary-row">
-            <span>Service Fee</span>
-            <span>RM2.00</span>
+            <span>Service tax</span>
+            <span>6%</span>
+          </div>
+          <div class="summary-row" id="discountRow">
+            <span>Member Discount (20% off)</span>
+            <span>-RM0.00</span>
           </div>
           <div class="summary-row total">
             <span>Total</span>
