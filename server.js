@@ -5,7 +5,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 5500;
 
 // Middleware
 app.use(express.json());
@@ -14,11 +14,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes: HTML Pages
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html')));
 app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, 'public/cart.html')));
+app.get('/checkout', (req, res) => res.sendFile(path.join(__dirname, 'public/checkout.html')));
+app.get('/profile', (req, res) => res.sendFile(path.join(__dirname, 'public/profile.html')));
+app.get('/payment-history', (req, res) => res.sendFile(path.join(__dirname, 'public/payment-history.html')));
 app.get('/success', (req, res) => res.sendFile(path.join(__dirname, 'public/success.html')));
 app.get('/cancel', (req, res) => res.sendFile(path.join(__dirname, 'public/cancel.html')));
 
 // Stripe Checkout Session
-app.post('/create-checkout-session', async (req, res) => {
+app.post('/create-checkout-session', async (req, res) => {  
   try {
     const { items, hasDiscount } = req.body;
     
@@ -61,4 +64,8 @@ app.post('/create-checkout-session', async (req, res) => {
     console.error('Stripe Error:', error);
     res.status(500).json({ error: error.message || 'Checkout failed' });
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
