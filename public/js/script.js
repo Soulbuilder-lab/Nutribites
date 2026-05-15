@@ -1,9 +1,9 @@
 // 📦 Products Data with Value Propositions
 const products = [
-  {
-    id: 1,
-    title: "Dark Chocolate Protein Bar",
-    price: 16.90,
+  { 
+    id: 1, 
+    title: "Dark Chocolate Protein Bar", 
+    price: 16.90, 
     images: [
       "Images/Chocolate-bar .jpeg",
       "Images/Chocolatepack.jpeg",
@@ -12,10 +12,10 @@ const products = [
     description: "Rich Belgian dark chocolate infused with premium whey protein",
     badge: "🌱 Eco-Friendly" // Value Prop: Sustainability
   },
-  {
-    id: 2,
-    title: "Granola Power Bar",
-    price: 13.90,
+  { 
+    id: 2, 
+    title: "Granola Power Bar", 
+    price: 13.90, 
     images: [
       "Images/Granola-bar.jpeg",
       "Images/Granolapack.jpeg",
@@ -24,10 +24,10 @@ const products = [
     description: "Artisan blend of organic oats, wild honey, and premium nuts",
     badge: "⚡ Fast Energy" // Value Prop: Performance
   },
-  {
-    id: 3,
-    title: "Veggie Crunch Mix",
-    price: 22.90,
+  { 
+    id: 3, 
+    title: "Veggie Crunch Mix", 
+    price: 22.90, 
     images: [
       "Images/Cashew-crunch.jpeg",
       "Images/Cashewpack.jpeg",
@@ -36,10 +36,10 @@ const products = [
     description: "Premium whole veggie crunch with traditional recipe",
     badge: "💰 Best Value" // Value Prop: Price
   },
-  {
-    id: 4,
-    title: "Spiced Cashew Bowl",
-    price: 20.90,
+  { 
+    id: 4, 
+    title: "Spiced Cashew Bowl", 
+    price: 20.90, 
     images: [
       "Images/Spiced-cashews.jpeg",
       "Images/Spicedpack.jpeg",
@@ -48,10 +48,10 @@ const products = [
     description: "Traditional Malaysian spiced cashews with curry leaves & chilies",
     badge: "🔥 Trending Now" // Value Prop: Popularity
   },
-  {
-    id: 5,
-    title: "Yogurt Berry Crunch Cups",
-    price: 10.90,
+  { 
+    id: 5, 
+    title: "Yogurt Berry Crunch Cups", 
+    price: 10.90, 
     images: [
       "Images/Yogurt.jpeg",
       "Images/Yogurtpack.jpeg",
@@ -281,4 +281,152 @@ document.addEventListener('click', (e) => {
       btn.style.background = '';
     }, 1500);
   }
+});
+
+/* ==================== USER AUTHENTICATION SYSTEM ==================== */
+// Check if user is logged in
+function checkUserStatus() {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  
+  if (user) {
+    // User is logged in - apply 20% discount
+    document.querySelectorAll('.cart-item-price').forEach(el => {
+      const originalPrice = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+      const discountedPrice = originalPrice * 0.8; // 20% off
+      el.textContent = `RM${discountedPrice.toFixed(2)}`;
+    });
+    
+    // Update cart totals
+    calculateCartTotals();
+  } else {
+    // User is not logged in - show regular prices
+    document.querySelectorAll('.cart-item-price').forEach(el => {
+      const originalPrice = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+      el.textContent = `RM${originalPrice.toFixed(2)}`;
+    });
+    
+    // Update cart totals
+    calculateCartTotals();
+  }
+}
+
+// Calculate cart totals with discount
+function calculateCartTotals() {
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  const hasDiscount = user && user.discount;
+  
+  // Apply 20% discount if user is logged in
+  let discount = 0;
+  if (hasDiscount) {
+    discount = subtotal * 0.20;
+  }
+  
+  const total = subtotal - discount + 5; // 5 = delivery fee
+  
+  // Update display
+  const subtotalEl = document.getElementById('checkoutSubtotal');
+  const totalEl = document.getElementById('checkoutTotal');
+  const discountEl = document.getElementById('discountRow');
+  
+  if (subtotalEl) {
+    subtotalEl.textContent = `RM${subtotal.toFixed(2)}`;
+  }
+  
+  if (totalEl) {
+    totalEl.textContent = `RM${total.toFixed(2)}`;
+  }
+  
+  // Show/hide discount row
+  if (discountEl) {
+    if (discount > 0) {
+      discountEl.style.display = 'flex';
+      discountEl.innerHTML = `
+        <span style="color: var(--primary-sage);">Member Discount (20%):</span>
+        <span style="color: var(--primary-sage);">-RM${discount.toFixed(2)}</span>
+      `;
+    } else {
+      discountEl.style.display = 'none';
+    }
+  }
+}
+
+// User authentication functions
+function login(email, password) {
+  // In a real app, this would check against a server
+  // For demo, we'll just create a dummy user
+  const user = {
+    id: Date.now(),
+    name: email.split('@')[0],
+    email: email,
+    discount: 20,
+    joinedDate: new Date().toISOString()
+  };
+  
+  localStorage.setItem('currentUser', JSON.stringify(user));
+  
+  // Update UI
+  document.querySelector('.user-name').textContent = user.name;
+  document.querySelector('.user-icon').classList.add('logged-in');
+  
+  // Apply discount
+  checkUserStatus();
+  
+  return user;
+}
+
+function logout() {
+  localStorage.removeItem('currentUser');
+  
+  // Update UI
+  document.querySelector('.user-name').textContent = 'Login';
+  document.querySelector('.user-icon').classList.remove('logged-in');
+  
+  // Remove discount
+  checkUserStatus();
+}
+
+// Initialize user status
+document.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  if (user) {
+    document.querySelector('.user-name').textContent = user.name;
+    document.querySelector('.user-icon').classList.add('logged-in');
+  }
+  
+  // Check cart for discounts
+  checkUserStatus();
+});
+
+// Add login functionality to profile button
+document.addEventListener('DOMContentLoaded', () => {
+  const profileBtn = document.querySelector('.user-icon');
+  if (profileBtn) {
+    profileBtn.addEventListener('click', () => {
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      if (user) {
+        // User is logged in - show profile
+        window.location.href = 'profile.html';
+      } else {
+        // User is not logged in - show login
+        window.location.href = 'login.html';
+      }
+    });
+  }
+});
+
+// Add logout functionality
+function setupLogout() {
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      logout();
+      window.location.href = 'index.html';
+    });
+  }
+}
+
+// Calculate cart totals on page load
+document.addEventListener('DOMContentLoaded', () => {
+  calculateCartTotals();
 });

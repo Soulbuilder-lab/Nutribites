@@ -62,10 +62,33 @@ function removeItem(productId) {
 function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
 
 function updateTotals() {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const total = subtotal + 5 + 2;
+  const delivery = 5.00;
+  const serviceTax = subtotal * 0.06; // 6% tax
+
+  // Calculate 20% discount if logged in
+  let discountAmount = 0;
+  if (user && user.discount) {
+    discountAmount = subtotal * (user.discount / 100);
+  }
+
+  const total = subtotal - discountAmount + delivery + serviceTax;
+
+  // Update DOM
   document.getElementById('subtotal').textContent = `RM${subtotal.toFixed(2)}`;
   document.getElementById('total').textContent = `RM${total.toFixed(2)}`;
+
+  // Update & Show/Hide Discount Row
+  const discountRow = document.getElementById('discountRow');
+  if (discountRow) {
+    if (discountAmount > 0) {
+      discountRow.style.display = 'flex';
+      discountRow.innerHTML = `<span>Member Discount (${user.discount}% off)</span><span>-RM${discountAmount.toFixed(2)}</span>`;
+    } else {
+      discountRow.style.display = 'none';
+    }
+  }
 }
 
 function updateCartCount() {
