@@ -20,23 +20,33 @@ app.get('/cancel', (req, res) => res.sendFile(path.join(__dirname, 'public/cance
 // Stripe Checkout Session
 app.post('/create-checkout-session', async (req, res) => {
   try {
-    const { items } = req.body;
+    const { items, hasDiscount } = req.body;
     
     if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ error: 'Cart is empty or invalid.' });
     }
 
-    const line_items = items.map(item => ({
-      price_data: {
-        currency: 'myr', // Malaysian Ringgit
-        product_data: {
-          name: item.title || item.name || 'Product',
-          images: item.image ? [item.image] : [],
+    // Calculate prices with optional 20% discount
+    const line_items = items.map(item => {
+      let unitAmount = Math.round(parseFloat(item.price || 0) * 100);
+      
+      // Apply 20% discount if user is logged in
+      if (hasDiscount) {
+        unitAmount = Math.round(unitAmount * 0.80); // 20% off
+      }
+      
+      return {
+        price_data: {
+          currency: 'myr', // Changed to MYR for Malaysia
+          product_data: {
+            name: item.title || item.name || 'Product',
+            images: item.image ? [item.image] : [],
+          },
+          unit_amount: unitAmount,
         },
-        unit_amount: Math.round(parseFloat(item.price || 0) * 100),
-      },
-      quantity: parseInt(item.quantity, 10) || 1,
-    }));
+        quantity: parseInt(item.quantity, 10) || 1,
+      };
+    });
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -51,8 +61,4 @@ app.post('/create-checkout-session', async (req, res) => {
     console.error('Stripe Error:', error);
     res.status(500).json({ error: error.message || 'Checkout failed' });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`✅ Server running: http://localhost:${PORT}`);
 });
