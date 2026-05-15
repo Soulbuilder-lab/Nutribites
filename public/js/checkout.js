@@ -203,7 +203,13 @@ function setupFormSubmission() {
         if (!document.hidden) {
         const user = JSON.parse(localStorage.getItem('currentUser'));
         if (user) {
-            showProfileDashboard(user);
+            // Refresh order count on profile page if open
+            const totalOrdersEl = document.getElementById('totalOrdersEl');
+            if (totalOrdersEl) {
+              const allOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+              const userOrders = allOrders.filter(order => order.customer?.email === user.email);
+              totalOrdersEl.textContent = userOrders.length;
+            }
                 }
             }
         });

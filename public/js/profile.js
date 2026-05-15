@@ -159,7 +159,7 @@ window.addEventListener('storage', (e) => {
 function updateOrderCount(user) {
   const allOrders = JSON.parse(localStorage.getItem('orders') || '[]');
   const userOrders = allOrders.filter(order => order.customer?.email === user.email);
-  const totalOrdersEl = document.getElementById('totalOrders');
+  const totalOrdersEl = document.getElementById('totalOrdersEl');
   if (totalOrdersEl) {
     totalOrdersEl.textContent = userOrders.length;
   }
