@@ -842,6 +842,8 @@ h3 {
 .about-image {
   border-radius: var(--radius-lg);
   overflow: hidden;
+  width: 90%;
+  height: 90%;
   box-shadow: var(--shadow-hover);
 }
 
